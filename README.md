@@ -6,6 +6,11 @@ Projeto prático da Capacitação Express PHP - DB1.
 
 Acesse a pasta do projeto e efetue os passos seguintes:
 
+**Criação do arquivo .env**
+```
+cp .env.example .env
+```
+
 **Instalando as dependências**
 ```
 docker run --rm -v $(pwd):/app -w /app laravelsail/php81-composer:latest composer install
@@ -14,6 +19,13 @@ docker run --rm -v $(pwd):/app -w /app laravelsail/php81-composer:latest compose
 **Subindo os containers Docker:**
 ```
 ./vendor/bin/sail up -d
+```
+
+**Acesse o container e gere uma nova chave para a aplicação**
+```
+docker exec -it <LARAVEL_PHP_CONTAINER_ID> bash
+
+php artisan key:generate
 ```
 
 Com isso a aplicação já estará disponível em `http://localhost`.
